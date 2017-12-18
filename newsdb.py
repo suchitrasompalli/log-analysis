@@ -12,7 +12,7 @@ POPULAR_ARTICLES_SQL = "select title, article_hit_count from articles, \
                         articles.slug = articles_popularity.slug order by \
                         article_hit_count desc fetch first {0} rows only;"
 
-POPULAR_AUTHORS_SQL = "select name, sum(article_hit_count) as count \
+POPULAR_AUTHORS_SQL = "select authors_slug.name, sum(article_hit_count) as count \
                         from articles_popularity, authors_slug where \
                         articles_popularity.slug = authors_slug.slug \
                         group by name order by count desc;"
